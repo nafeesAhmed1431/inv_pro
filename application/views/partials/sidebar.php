@@ -51,13 +51,13 @@
         <!-- Misc -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Dashboard</span></li>
         <li class="menu-item">
-            <a href="<?=base_url('dashboard')?>" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-support"></i>Dashboard
+            <a href="<?= base_url('dashboard') ?>" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>Dashboard
             </a>
         </li>
         <li class="menu-item">
-            <a href="<?=base_url('users')?>" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-support"></i>Users
+            <a href="<?= base_url('users') ?>" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>Users
             </a>
         </li>
     </ul>
@@ -69,14 +69,13 @@
         var currentUrl = window.location.href;
         var urlParts = currentUrl.split('/');
         var slug = urlParts[urlParts.length - 1];
-
         $('.menu-item').each(function() {
             var link = $(this).find('a');
             var href = link.attr('href');
 
-            if (href.indexOf(slug) !== -1) {
+            // Check if the current URL contains the menu item's href
+            if (currentUrl.indexOf(href) !== -1) {
                 $(this).addClass('active');
-
                 // Check if it has a menu-toggle class
                 if ($(this).hasClass('menu-toggle')) {
                     $(this).addClass('open');

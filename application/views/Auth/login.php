@@ -69,7 +69,7 @@
 
                     <p class="text-center">
                         <span>New on our platform?</span>
-                        <a href="<?=base_url('register')?>">
+                        <a href="<?= base_url('register') ?>">
                             <span>Create an account</span>
                         </a>
                     </p>
@@ -80,28 +80,26 @@
 </div>
 
 <script>
-
-    $(document).on('submit','#login_form',function(e){
+    $(document).on('submit', '#login_form', function(e) {
         e.preventDefault();
         $.ajax({
-            url : `${base_url}/auth/login_auth`,
-            dataType : 'json',
-            method : 'POST',
-            contentType : false,
-            processData : false,
-            data : new FormData(this),
-            success : res => {
+            url: `${base_url}/auth/login_auth`,
+            dataType: 'json',
+            method: 'POST',
+            contentType: false,
+            processData: false,
+            data: new FormData(this),
+            success: res => {
                 $('.err_msg').remove();
-                if(res.status){
-
-                }else{
-                    $.each(res.error,function(i,m){
+                if (res.status) {
+                    location.href = res.redirect_url;
+                } else {
+                    $.each(res.error, function(i, m) {
                         $(`input[name="${i}"]`).after(`<small class="err_msg text-danger">${m}</small>`);
                     })
                 }
             },
-            error : res => {},
+            error: res => {},
         });
     });
-    
 </script>

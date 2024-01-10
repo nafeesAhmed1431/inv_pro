@@ -35,7 +35,7 @@ class Auth extends CI_Controller
         if ($this->form_validation->run('auth/login')) {
             $res = $this->auth_model->authenticate($email, $password);
             if ($res['status']) {
-                echo json_encode(['status' => true, 'auth' => login($res['user']), 'redirect_url' => base_url('dashboard')]);
+                echo json_encode(['status' => login($res['user']), 'redirect_url' => base_url('dashboard')]);
             } else {
                 echo json_encode($res);
             }
