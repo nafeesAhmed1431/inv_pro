@@ -34,6 +34,9 @@
     <!-- Helpers -->
     <script src="<?= base_url('assets/vendor/js/helpers.js') ?>"></script>
     <script src="<?= base_url('assets/js/config.js') ?>"></script>
+    <script>
+        let base_url = "<?= base_url() ?>";
+    </script>
     <script src="<?= base_url('assets/vendor/libs/jquery/jquery.js') ?>"></script>
 </head>
 
