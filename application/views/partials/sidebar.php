@@ -60,6 +60,16 @@
                 <i class="menu-icon tf-icons bx bx-user"></i>Users
             </a>
         </li>
+        <li class="menu-item">
+            <a href="<?= base_url('products') ?>" class="menu-link">
+                <i class="bx bx-store-alt bx-sm"></i>Products
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= base_url('roles') ?>" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-check-shield"></i>Roles & Permissions
+            </a>
+        </li>
     </ul>
 </aside>
 <!-- / Menu -->

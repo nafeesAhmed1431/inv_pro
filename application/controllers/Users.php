@@ -12,11 +12,17 @@ class Users extends MY_Controller
 
 	public function index()
 	{
-		$this->load_view('users/index');
+		$data['total'] = $this->user_model->count();
+		$data['active'] = $this->user_model->count(['is_active' => 1]);
+		$data['inActive'] = $this->user_model->count(['is_active' => 0]);
+		$this->load_view('users/index', $data);
 	}
 
 	public function users_table()
 	{
-		$users = $this->user_model->get_all();
+		echo json_encode([
+			'status' => true,
+			'html' => $this->load->view('users/users_table', ['users' => $this->user_model->all()], true)
+		]);
 	}
 }
