@@ -10,4 +10,18 @@ $config = [
         ['field' => 'email', 'label' => 'Email', 'rules' => 'required|valid_email'],
         ['field' => 'password', 'label' => 'Password', 'rules' => 'required',]
     ],
+    'users/add' => [
+        ['field' => 'first_name', 'label' => 'First Name', 'rules' => 'required'],
+        ['field' => 'last_name', 'label' => 'Last Name', 'rules' => 'required'],
+        ['field' => 'username', 'label' => 'Username', 'rules' => 'required'],
+        ['field' => 'email', 'label' => 'Email', 'rules' => 'required|valid_email'],
+        ['field' => 'phone', 'label' => 'Phone', 'rules' => 'required|numeric'],
+    ],
+    'users/update' => [
+        ['field' => 'first_name', 'label' => 'First Name', 'rules' => 'required'],
+        ['field' => 'last_name', 'label' => 'Last Name', 'rules' => 'required'],
+        ['field' => 'username', 'label' => 'Username', 'rules' => 'required'],
+        ['field' => 'email', 'label' => 'Email', 'rules' => 'required|valid_email'],
+        ['field' => 'phone', 'label' => 'Phone', 'rules' => 'required|numeric'],
+    ],
 ];

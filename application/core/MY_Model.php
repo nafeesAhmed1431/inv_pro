@@ -56,10 +56,10 @@ class MY_Model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
-    public function insert($data)
+    public function insert($data, $id = false)
     {
-        $this->db->insert($this->table, $data);
-        return $this->db->insert_id();
+        $st = $this->db->insert($this->table, $data);
+        return $id ? $this->db->insert_id() : $st;
     }
 
     public function update($data, $where)
@@ -69,7 +69,8 @@ class MY_Model extends CI_Model
 
     public function delete($data)
     {
-        return $this->db->delete($this->table, gettype($data) == "string" ? ['id' => $data] : $data);
+        return $this->db->delete($this->table, is_string($data) ? ['id' => $data] : $data);
+        // return $this->db->delete($this->table, gettype($data) == "string" ? ['id' => $data] : $data);
     }
 
 
