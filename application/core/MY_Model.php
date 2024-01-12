@@ -33,7 +33,15 @@ class MY_Model extends CI_Model
         return $this->db->select($select)->get($this->table)->result();
     }
 
-    public function get($select = '*', $where = null, $limit = null, $offset = null, $order_by = null)
+    public function get($data)
+    {
+        return $this->db->where(gettype($data) == "string" ? ['id' => $data] : $data)
+            ->get($this->table)
+            ->{gettype($data) == "int" ? 'result' : 'row'}();
+    }
+
+
+    public function get_options($select = '*', $where = null, $limit = null, $offset = null, $order_by = null)
     {
         $this->db->select($select);
         if ($where !== null) {
@@ -56,15 +64,14 @@ class MY_Model extends CI_Model
 
     public function update($data, $where)
     {
-        $this->db->update($this->table, $data, $where);
-        return $this->db->affected_rows();
+        return $this->db->update($this->table, $data, $where);
     }
 
-    public function delete($where)
+    public function delete($data)
     {
-        $this->db->delete($this->table, $where);
-        return $this->db->affected_rows();
+        return $this->db->delete($this->table, gettype($data) == "string" ? ['id' => $data] : $data);
     }
+
 
     public function count($where = null)
     {

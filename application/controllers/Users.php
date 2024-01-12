@@ -20,9 +20,12 @@ class Users extends MY_Controller
 
 	public function users_table()
 	{
-		echo json_encode([
-			'status' => true,
-			'html' => $this->load->view('users/users_table', ['users' => $this->user_model->all()], true)
-		]);
+		echo json_encode(['status' => true, 'html' => $this->load->view('users/users_table', ['users' => $this->user_model->all()], true)]);
+	}
+
+	public function get()
+	{
+		$user = $this->user_model->get($this->input->get('id'));
+		echo json_encode(['status' => !empty($user), 'data' => $user]);
 	}
 }
