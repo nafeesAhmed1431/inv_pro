@@ -1,10 +1,11 @@
 $(document).ready(function () {
+    users = base_url + 'users';
     load_content();
 });
 
 function load_content() {
     $.ajax({
-        url: `${base_url}/users/users_table`,
+        url: `${users}/index_content`,
         dataType: 'json',
         method: 'GET',
         success: res => {
@@ -43,7 +44,7 @@ $(document).on('click', '.edit_user', function () {
 $(document).on('submit', '#add_user', function (e) {
     e.preventDefault();
     $.ajax({
-        url: `${base_url}/users/add`,
+        url: `${users}/add`,
         method: 'POST',
         contentType: false,
         processData: false,
@@ -66,7 +67,7 @@ $(document).on('submit', '#add_user', function (e) {
 $(document).on('submit', '#update_user', function (e) {
     e.preventDefault();
     $.ajax({
-        url: `${base_url}/users/update`,
+        url: `${users}/update`,
         method: 'POST',
         contentType: false,
         processData: false,
@@ -90,7 +91,7 @@ $(document).on('submit', '#update_user', function (e) {
 $(document).on('click', '.delete_user', function () {
     if (confirm('Are you Sure you Want to delete this User')) {
         $.ajax({
-            url: `${base_url}/users/delete`,
+            url: `${users}/delete`,
             dataType: 'json',
             method: 'POST',
             data: {
@@ -108,7 +109,7 @@ $(document).on('click', '.delete_user', function () {
 
 function get_user(id) {
     return $.ajax({
-        url: `${base_url}/users/get`,
+        url: `${users}/get`,
         dataType: 'json',
         method: 'GET',
         data: {

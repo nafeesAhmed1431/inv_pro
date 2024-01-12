@@ -15,31 +15,35 @@ class Drivers extends MY_Controller
         $this->load_view('drivers/index');
     }
 
-    public function users_table()
+    public function index_content()
     {
-        $data['total'] = $this->user_model->count();
-        $data['active'] = $this->user_model->count(['is_active' => 1]);
-        $data['inActive'] = $this->user_model->count(['is_active' => 0]);
-        $data['users'] = $this->user_model->all();
-        echo json_encode(['status' => true, 'html' => $this->load->view('users/users_table', $data, true)]);
+        $data['total'] = $this->driver_model->count();
+        $data['active'] = $this->driver_model->count(['is_active' => 1]);
+        $data['inActive'] = $this->driver_model->count(['is_active' => 0]);
+        $data['drivers'] = $this->driver_model->all();
+        echo json_encode(['status' => true, 'html' => $this->load->view('drivers/index_content', $data, true)]);
     }
 
     public function get()
     {
-        $user = $this->user_model->get($this->input->get('id'));
+        $user = $this->driver_model->get($this->input->get('id'));
         echo json_encode(['status' => !empty($user), 'data' => $user]);
     }
 
     public function add()
     {
-        if ($this->form_validation->run('users/add')) {
-            $res = $this->user_model->insert([
+        if ($this->form_validation->run('drivers/add|update')) {
+            $res = $this->driver_model->insert([
                 'first_name' => $this->input->post('first_name'),
                 'last_name' => $this->input->post('last_name'),
-                'username' => $this->input->post('username'),
                 'email' => $this->input->post('email'),
-                'phone' => $this->input->post('phone'),
+                'cnic' => $this->input->post('cnic'),
+                'vehicle_no' => $this->input->post('vehicle_no'),
+                'phone_1' => $this->input->post('phone_1'),
+                'phone_2' => $this->input->post('phone_2'),
+                'phone_3' => $this->input->post('phone_3'),
                 'is_active' => $this->input->post('status'),
+                'created_at' => date('Y-m-d H:i:s'),
             ], true);
             echo json_encode(['status' => $res]);
         } else {
@@ -52,14 +56,18 @@ class Drivers extends MY_Controller
 
     public function update()
     {
-        if ($this->form_validation->run('users/update')) {
-            $res = $this->user_model->update([
+        if ($this->form_validation->run('drivers/add|update')) {
+            $res = $this->driver_model->update([
                 'first_name' => $this->input->post('first_name'),
                 'last_name' => $this->input->post('last_name'),
-                'username' => $this->input->post('username'),
                 'email' => $this->input->post('email'),
-                'phone' => $this->input->post('phone'),
+                'cnic' => $this->input->post('cnic'),
+                'vehicle_no' => $this->input->post('vehicle_no'),
+                'phone_1' => $this->input->post('phone_1'),
+                'phone_2' => $this->input->post('phone_2'),
+                'phone_3' => $this->input->post('phone_3'),
                 'is_active' => $this->input->post('status'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ], ['id' => $this->input->post('id')]);
             echo json_encode([
                 'status' => $res
@@ -75,7 +83,7 @@ class Drivers extends MY_Controller
     public function delete()
     {
         echo json_encode([
-            'status' => $this->user_model->delete($this->input->post('id'))
+            'status' => $this->driver_model->delete($this->input->post('id'))
         ]);
     }
 }

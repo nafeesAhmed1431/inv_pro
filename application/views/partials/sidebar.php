@@ -61,9 +61,32 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="<?= base_url('products') ?>" class="menu-link">
-                <i class="bx bx-store-alt bx-sm"></i>Products
+            <a href="<?= base_url('drivers') ?>" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-truck"></i>Drivers
             </a>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cart-alt"></i>
+                <div class="text-truncate" data-i18n="Products">Products</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="<?= base_url('products') ?>" class="menu-link">
+                        <div class="text-truncate" data-i18n="Product List">Product List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="app-ecommerce-product-add.html" class="menu-link">
+                        <div class="text-truncate" data-i18n="Add Product">Add Product</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="app-ecommerce-category-list.html" class="menu-link">
+                        <div class="text-truncate" data-i18n="Category List">Category List</div>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li class="menu-item">
             <a href="<?= base_url('roles') ?>" class="menu-link">

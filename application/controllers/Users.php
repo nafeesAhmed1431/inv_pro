@@ -15,7 +15,7 @@ class Users extends MY_Controller
 		$this->load_view('users/index');
 	}
 
-	public function users_table()
+	public function index_content()
 	{
 		$data['total'] = $this->user_model->count();
 		$data['active'] = $this->user_model->count(['is_active' => 1]);
@@ -32,7 +32,7 @@ class Users extends MY_Controller
 
 	public function add()
 	{
-		if ($this->form_validation->run('users/add')) {
+		if ($this->form_validation->run('users/add|update')) {
 			$res = $this->user_model->insert([
 				'first_name' => $this->input->post('first_name'),
 				'last_name' => $this->input->post('last_name'),
@@ -52,7 +52,7 @@ class Users extends MY_Controller
 
 	public function update()
 	{
-		if ($this->form_validation->run('users/update')) {
+		if ($this->form_validation->run('users/add|update')) {
 			$res = $this->user_model->update([
 				'first_name' => $this->input->post('first_name'),
 				'last_name' => $this->input->post('last_name'),

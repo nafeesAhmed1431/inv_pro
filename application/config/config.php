@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ $config['index_page'] = '';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol']    = 'REQUEST_URI';
 
 /*
 |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language']    = 'english';
 
 /*
 |--------------------------------------------------------------------------
@@ -408,12 +408,12 @@ $config['sess_regenerate_destroy'] = FALSE;
 |       'cookie_httponly') will also affect sessions.
 |
 */
-$config['cookie_prefix']	= '';
-$config['cookie_domain']	= '';
-$config['cookie_path']		= '/';
-$config['cookie_secure']	= FALSE;
-$config['cookie_httponly'] 	= FALSE;
-$config['cookie_samesite'] 	= 'Lax';
+$config['cookie_prefix']    = '';
+$config['cookie_domain']    = '';
+$config['cookie_path']        = '/';
+$config['cookie_secure']    = FALSE;
+$config['cookie_httponly']     = FALSE;
+$config['cookie_samesite']     = 'Lax';
 
 /*
 |--------------------------------------------------------------------------
@@ -538,4 +538,12 @@ $config['company'] = [
     'phone' => '03304646090',
     'email' => 'kingscafe08@gmail.com',
     'address' => '116/B Muhafiz Town Main gate Wapda Town'
+];
+
+// Stripe Keys will be used for Stripe verification
+
+$config['stripe'] = [
+    'pk' => "pk_test_51LjdB6APYWlWcmjsHSmZtYaqsDIeYvc18jIpjzkNCfoosD239xR65lelbFbcyugKGzDWoPWzTDAIScnBW6c1aZyc00FnQiFihj",
+    'sk' => "sk_test_51LjdB6APYWlWcmjsi4RQPT9olIKUiprwmKTMOZD0Qca0qSa2oAUYsPzQM4zzVDl8UKUnlEKHyXWD1pRkdwrdeP1b00gbjOm1QP",
+    'currency' => 'usd'
 ];
