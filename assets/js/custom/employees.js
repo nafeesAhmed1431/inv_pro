@@ -1,5 +1,6 @@
+let keyword = 'employee';
 $(document).ready(function () {
-    pageUrl = base_url + 'users';
+    pageUrl = base_url + 'employees';
     load_content();
 });
 
@@ -17,31 +18,31 @@ function load_content() {
     });
 }
 
-$(document).on('click', '.add_user', function () {
-    $('#gc .gc_title').html('Add User');
-    $('#gc .gc_body').html(user_form("add", {}, 'add_user'));
+$(document).on('click', `.add_${keyword}`, function () {
+    $('#gc .gc_title').html(`Add ${keyword}`);
+    $('#gc .gc_body').html(user_form("add", {}, `add_${keyword}`));
     $('#gc').offcanvas('show');
 });
 
-$(document).on('click', '.view_user', function () {
-    get_user($(this).data('id'))
+$(document).on('click', `.view_${keyword}`, function () {
+    get($(this).data('id'))
         .done(res => {
-            $('#gc .gc_title').html('User Details');
-            $('#gc .gc_body').html(user_form("view", res.data, 'view_user'));
+            $('#gc .gc_title').html(`${keyword} Details`);
+            $('#gc .gc_body').html(user_form("view", res.data, `view_${keyword}`));
             $('#gc').offcanvas('show');
         });
 });
 
-$(document).on('click', '.edit_user', function () {
-    get_user($(this).data('id'))
+$(document).on('click', `.edit_${keyword}`, function () {
+    get($(this).data('id'))
         .done(res => {
             $('#gc .gc_title').html('Edit User');
-            $('#gc .gc_body').html(user_form("edit", res.data, 'update_user'));
+            $('#gc .gc_body').html(user_form("edit", res.data, `update_${keyword}`));
             $('#gc').offcanvas('show');
         });
 });
 
-$(document).on('submit', '#add_user', function (e) {
+$(document).on('submit', `#add_${keyword}`, function (e) {
     e.preventDefault();
     $.ajax({
         url: `${pageUrl}/add`,
@@ -64,7 +65,7 @@ $(document).on('submit', '#add_user', function (e) {
         error: res => { },
     });
 });
-$(document).on('submit', '#update_user', function (e) {
+$(document).on('submit', `#update_${keyword}`, function (e) {
     e.preventDefault();
     $.ajax({
         url: `${pageUrl}/update`,
@@ -88,8 +89,8 @@ $(document).on('submit', '#update_user', function (e) {
     });
 });
 
-$(document).on('click', '.delete_user', function () {
-    if (confirm('Are you Sure you Want to delete this User')) {
+$(document).on('click', `.delete_${keyword}`, function () {
+    if (confirm(`Are you Sure you Want to delete this ${keyword}`)) {
         $.ajax({
             url: `${pageUrl}/delete`,
             dataType: 'json',
@@ -107,7 +108,7 @@ $(document).on('click', '.delete_user', function () {
     }
 });
 
-function get_user(id) {
+function get(id) {
     return $.ajax({
         url: `${pageUrl}/get`,
         dataType: 'json',
@@ -117,6 +118,7 @@ function get_user(id) {
         }
     });
 }
+
 
 function user_form(status = 'view', data, id) {
     return `<form id="${id}">

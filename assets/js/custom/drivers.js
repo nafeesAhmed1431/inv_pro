@@ -1,11 +1,11 @@
 $(document).ready(function () {
-    drivers = base_url + 'drivers';
+    pageUrl = base_url + 'drivers';
     load_content();
 });
 
 function load_content() {
     $.ajax({
-        url: `${drivers}/index_content`,
+        url: `${pageUrl}/index_content`,
         dataType: 'json',
         method: 'GET',
         success: res => {
@@ -44,7 +44,7 @@ $(document).on('click', '.edit_driver', function () {
 $(document).on('submit', '#add_driver', function (e) {
     e.preventDefault();
     $.ajax({
-        url: `${drivers}/add`,
+        url: `${pageUrl}/add`,
         method: 'POST',
         contentType: false,
         processData: false,
@@ -67,7 +67,7 @@ $(document).on('submit', '#add_driver', function (e) {
 $(document).on('submit', '#update_driver', function (e) {
     e.preventDefault();
     $.ajax({
-        url: `${drivers}/update`,
+        url: `${pageUrl}/update`,
         method: 'POST',
         contentType: false,
         processData: false,
@@ -91,7 +91,7 @@ $(document).on('submit', '#update_driver', function (e) {
 $(document).on('click', '.delete_driver', function () {
     if (confirm('Are you Sure you Want to delete this Driver')) {
         $.ajax({
-            url: `${drivers}/delete`,
+            url: `${pageUrl}/delete`,
             dataType: 'json',
             method: 'POST',
             data: {
@@ -109,7 +109,7 @@ $(document).on('click', '.delete_driver', function () {
 
 function get_driver(id) {
     return $.ajax({
-        url: `${drivers}/get`,
+        url: `${pageUrl}/get`,
         dataType: 'json',
         method: 'GET',
         data: {

@@ -25,4 +25,8 @@ $config = [
         ['field' => 'phone_1', 'label' => 'Phone', 'rules' => 'required|numeric'],
         ['field' => 'vehicle_no', 'label' => 'Vehicle No', 'rules' => 'required'],
     ],
+    'employees/add|update' => [
+        ['field' => 'first_name', 'label' => 'First Name', 'rules' => 'required'],
+        ['field' => 'last_name', 'label' => 'Last Name', 'rules' => 'required'],
+    ],
 ];

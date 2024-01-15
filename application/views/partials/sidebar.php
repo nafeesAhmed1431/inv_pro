@@ -67,6 +67,29 @@
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div class="text-truncate">Employee</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="<?= base_url('employees') ?>" class="menu-link">
+                        <div class="text-truncate">Employee List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="<?= base_url('employeeAttendance') ?>" class="menu-link">
+                        <div class="text-truncate">Attendance</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="<?= base_url('employeeCategories') ?>" class="menu-link">
+                        <div class="text-truncate">Categories</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-cart-alt"></i>
                 <div class="text-truncate" data-i18n="Products">Products</div>
             </a>
