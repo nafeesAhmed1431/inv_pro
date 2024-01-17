@@ -46,7 +46,7 @@
                     </div>
                     <!-- /Logo -->
                     <p class="mb-4">Please sign-in to your account and start the adventure</p>
-
+                    <input type="hidden" name="active">
                     <form id="login_form" class="mb-3" action="index.html" method="POST">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>

@@ -3,11 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Users extends MY_Controller
 {
+	private $user_id;
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('user_model');
+		$this->user_id = $this->session->userdata('user')->id;
 	}
 
 	public function index()
@@ -17,10 +19,10 @@ class Users extends MY_Controller
 
 	public function index_content()
 	{
-		$data['total'] = $this->user_model->count();
-		$data['active'] = $this->user_model->count(['is_active' => 1]);
-		$data['inActive'] = $this->user_model->count(['is_active' => 0]);
-		$data['users'] = $this->user_model->all();
+		$data['total'] = $this->user_model->count(['id !=' => $this->user_id]);
+		$data['active'] = $this->user_model->count(['is_active' => 1, 'id !=' => $this->user_id]);
+		$data['inActive'] = $this->user_model->count(['is_active' => 0, 'id !=' => $this->user_id]);
+		$data['users'] = $this->user_model->where(['id !=' => $this->user_id]);
 		echo json_encode(['status' => true, 'html' => $this->load->view('users/users_table', $data, true)]);
 	}
 
