@@ -29,4 +29,12 @@ $config = [
         ['field' => 'first_name', 'label' => 'First Name', 'rules' => 'required'],
         ['field' => 'last_name', 'label' => 'Last Name', 'rules' => 'required'],
     ],
+    'branches/add|update' => [
+        ['field' => 'name', 'label' => 'Branch Name', 'rules' => 'required'],
+        ['field' => 'phone', 'label' => 'Branch Phone', 'rules' => 'required|numeric'],
+        ['field' => 'email', 'label' => 'Branch Email', 'rules' => 'required|valid_email'],
+        ['field' => 'landline_1', 'label' => 'land Line', 'rules' => 'required|numeric'],
+        ['field' => 'address', 'label' => 'Branch Address', 'rules' => 'required|trim'],
+        ['field' => 'desc', 'label' => 'Branch Description', 'rules' => 'trim'],
+    ],
 ];
