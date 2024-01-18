@@ -46,7 +46,11 @@ class Auth extends CI_Controller
 
     public function register()
     {
-        $this->load_view('register', $this->config->item('company'));
+
+        // $this->load_view('register', $this->config->item('company'));
+        $this->load->view('auth/auth_header');
+        $this->load->view("misc/under_development");
+        $this->load->view('auth/auth_footer');
     }
 
     public function logout()

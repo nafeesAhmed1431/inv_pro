@@ -20,7 +20,7 @@ class MY_Controller extends CI_Controller
     {
         $meta['page_title'] = get_called_class();
         $this->load->view('partials/header', $meta);
-        $this->load->view('partials/sidebar');
+        $this->load->view('partials/sidebar', $this->config->item('company'));
         $this->load->view('partials/navbar');
         $this->load->view($view, $data);
         $this->load->view('partials/footer');

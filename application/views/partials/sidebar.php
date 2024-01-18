@@ -37,7 +37,7 @@
                     </g>
                 </svg>
             </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-2">Kings Cafe</span>
+            <span class="app-brand-text demo menu-text fw-bold ms-2"><?=ucfirst($name) ?></span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -84,6 +84,24 @@
                 <li class="menu-item">
                     <a href="<?= base_url('employeeCategories') ?>" class="menu-link">
                         <div class="text-truncate">Categories</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-building"></i>
+                <div class="text-truncate" data-i18n="Products">Supplies</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="<?= base_url('suppliesChicken') ?>" class="menu-link">
+                        <div class="text-truncate" data-i18n="Product List">Chicken</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="<?= base_url('suppliesCheese') ?>" class="menu-link">
+                        <div class="text-truncate" data-i18n="Add Product">Cheese</div>
                     </a>
                 </li>
             </ul>

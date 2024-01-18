@@ -534,7 +534,7 @@ $config['proxy_ips'] = '';
 
 
 $config['company'] = [
-    'name' => 'Kings Cafe',
+    'name' => 'INV Pro',
     'phone' => '03304646090',
     'email' => 'kingscafe08@gmail.com',
     'address' => '116/B Muhafiz Town Main gate Wapda Town'
