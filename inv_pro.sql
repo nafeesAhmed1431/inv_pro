@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2024 at 11:17 PM
--- Server version: 10.4.27-MariaDB
+-- Generation Time: Jan 23, 2024 at 11:39 AM
+-- Server version: 10.4.32-MariaDB
 -- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -20,6 +20,65 @@ SET time_zone = "+00:00";
 --
 -- Database: `inv_pro`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `branches`
+--
+
+CREATE TABLE `branches` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `landline_1` int(11) NOT NULL,
+  `landline_2` int(11) DEFAULT NULL,
+  `landline_3` int(11) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1,
+  `is_main` tinyint(1) NOT NULL DEFAULT 0,
+  `delete_bit` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `branches`
+--
+
+INSERT INTO `branches` (`id`, `name`, `phone`, `email`, `landline_1`, `landline_2`, `landline_3`, `address`, `description`, `is_active`, `is_main`, `delete_bit`, `created_at`, `updated_at`) VALUES
+(4, 'King Pizza Citi', '03004646090', 'kpciti@gmail.com', 554290903, 0, 0, 'kinhg pizza citi housing...', 'fdsfs', 1, 0, 0, '2024-01-17 18:32:05', '2024-01-17 18:32:05'),
+(6, 'Kings Cafe', '03304646090', 'kingscafe8@gmail.com', 554290903, 0, 0, 'dsadsa', '', 1, 0, 0, '2024-01-22 17:59:58', '2024-01-22 18:00:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `brands`
+--
+
+CREATE TABLE `brands` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `mobile` varchar(20) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `landline_1` varchar(20) DEFAULT NULL,
+  `landline_2` varchar(20) DEFAULT NULL,
+  `landline_3` varchar(20) NOT NULL,
+  `address` text NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `brands`
+--
+
+INSERT INTO `brands` (`id`, `name`, `email`, `mobile`, `phone`, `landline_1`, `landline_2`, `landline_3`, `address`, `is_active`, `created_at`, `updated_at`) VALUES
+(2, 'Shezan', 'shezan@gmail.com', '78978990', '89890890', '89089089', '890890890', '890890890', '890890890', 0, '2024-01-22 17:21:16', '2024-01-22 17:21:16');
 
 -- --------------------------------------------------------
 
@@ -47,7 +106,21 @@ CREATE TABLE `drivers` (
 --
 
 INSERT INTO `drivers` (`id`, `first_name`, `last_name`, `cnic`, `email`, `phone_1`, `phone_2`, `phone_3`, `vehicle_no`, `is_active`, `created_at`, `updated_at`) VALUES
-(3, 'Salman', 'Ahmed', '678678687', 'nafees1431@gmail.com', '000000000', '', '', '7868', 0, '2024-01-12 19:51:37', '2024-01-12 19:53:08');
+(3, 'Salman', 'Ahmed', '678678687', 'nafees1431@gmail.com', '000000000', '', '', '7868', 0, '2024-01-12 19:51:37', '2024-01-12 19:53:08'),
+(4, 'Magnet', 'Star', '567567567', 'magneto@gmail.com', '08122277780', '', '', '678', 0, '2024-01-13 21:35:12', '2024-01-13 21:35:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employees`
+--
+
+CREATE TABLE `employees` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -117,6 +190,29 @@ CREATE TABLE `products` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product_categories`
+--
+
+CREATE TABLE `product_categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(1000) NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product_categories`
+--
+
+INSERT INTO `product_categories` (`id`, `name`, `is_active`, `created_at`, `updated_at`) VALUES
+(3, 'Store', 1, '2024-01-22 15:38:07', '2024-01-22 15:38:07'),
+(4, 'Spice', 1, '2024-01-22 15:38:35', '2024-01-22 15:38:35'),
+(5, 'Chicken', 1, '2024-01-22 15:41:04', '2024-01-22 15:41:04');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `suppliers`
 --
 
@@ -127,6 +223,30 @@ CREATE TABLE `suppliers` (
   `address` varchar(100) DEFAULT NULL,
   `description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `units`
+--
+
+CREATE TABLE `units` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `symbol` varchar(10) NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `units`
+--
+
+INSERT INTO `units` (`id`, `name`, `symbol`, `is_active`, `created_at`, `updated_at`) VALUES
+(2, 'KiloGram', 'kg', 1, '2024-01-22 17:57:59', '2024-01-22 17:57:59'),
+(3, 'Mounds', 'mounds', 1, '2024-01-22 17:58:24', '2024-01-22 17:58:24'),
+(4, 'Gram', 'g', 1, '2024-01-22 17:58:32', '2024-01-22 17:58:32');
 
 -- --------------------------------------------------------
 
@@ -153,11 +273,24 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `phone`, `role_id`, `is_active`, `created_at`, `updated_at`) VALUES
-(8, 'nafees', 'admin@gmail.com', 'hain@123', 'Magnet', 'Star', '08122277780', 0, 1, '0000-00-00 00:00:00', '2024-01-12 23:34:14');
+(9, 'nafees', 'admin@gmail.com', 'hain@123', 'nafees', 'ahmed', '789789789', 0, 1, '2024-01-15 07:17:13', '2024-01-15 11:17:54'),
+(13, 'salman', 'nafees1431@gmail.com', '', 'Salman', 'Ahmed', '0403213728', 0, 1, '0000-00-00 00:00:00', '2024-01-18 16:55:00');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `branches`
+--
+ALTER TABLE `branches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `brands`
+--
+ALTER TABLE `brands`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `drivers`
@@ -166,9 +299,27 @@ ALTER TABLE `drivers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `employees`
+--
+ALTER TABLE `employees`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_categories`
+--
+ALTER TABLE `product_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `suppliers`
 --
 ALTER TABLE `suppliers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `units`
+--
+ALTER TABLE `units`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -182,10 +333,34 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `branches`
+--
+ALTER TABLE `branches`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `brands`
+--
+ALTER TABLE `brands`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `drivers`
 --
 ALTER TABLE `drivers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `employees`
+--
+ALTER TABLE `employees`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `product_categories`
+--
+ALTER TABLE `product_categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -194,10 +369,16 @@ ALTER TABLE `suppliers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `units`
+--
+ALTER TABLE `units`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
