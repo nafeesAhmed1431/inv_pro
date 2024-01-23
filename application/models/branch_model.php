@@ -1,5 +1,5 @@
 <?php
-class branch_model extends MY_Model
+class Branch_model extends MY_Model
 {
     public function __construct()
     {

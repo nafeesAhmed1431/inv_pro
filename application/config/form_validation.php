@@ -37,4 +37,21 @@ $config = [
         ['field' => 'address', 'label' => 'Branch Address', 'rules' => 'required|trim'],
         ['field' => 'desc', 'label' => 'Branch Description', 'rules' => 'trim'],
     ],
+    'product_categories/add|update' => [
+        ['field' => 'name', 'label' => 'Category Name', 'rules' => 'required|alpha']
+    ],
+    'product_brand/add|update' => [
+        ['field' => 'name', 'label' => 'Name', 'rules' => 'required|alpha'],
+        ['field' => 'email', 'label' => 'Email', 'rules' => 'required|valid_email'],
+        ['field' => 'mobile', 'label' => 'Mobile', 'rules' => 'required|numeric'],
+        ['field' => 'phone', 'label' => 'Phone', 'rules' => 'numeric'],
+        ['field' => 'landline_1', 'label' => 'Landline 1', 'rules' => 'numeric'],
+        ['field' => 'landline_2', 'label' => 'Landline 2', 'rules' => 'numeric'],
+        ['field' => 'landline_3', 'label' => 'Landline 3', 'rules' => 'numeric'],
+        ['field' => 'address', 'label' => 'Address', 'rules' => 'required'],
+    ],
+    'product_unit/add|update' => [
+        ['field' => 'name', 'label' => 'Name', 'rules' => 'required|alpha'],
+        ['field' => 'symbol', 'label' => 'Symbol', 'rules' => 'required|alpha'],
+    ],
 ];

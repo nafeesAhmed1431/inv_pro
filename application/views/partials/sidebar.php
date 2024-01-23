@@ -37,7 +37,7 @@
                     </g>
                 </svg>
             </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-2"><?=ucfirst($name) ?></span>
+            <span class="app-brand-text demo menu-text fw-bold ms-2"><?= ucfirst($name) ?></span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -132,17 +132,27 @@
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="<?= base_url('products') ?>" class="menu-link">
-                        <div class="text-truncate" data-i18n="Product List">Product List</div>
+                        <div class="text-truncate">Product List</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="app-ecommerce-product-add.html" class="menu-link">
-                        <div class="text-truncate" data-i18n="Add Product">Add Product</div>
+                    <a href="<?= base_url('products/add') ?>" class="menu-link">
+                        <div class="text-truncate">Add Product</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="app-ecommerce-category-list.html" class="menu-link">
-                        <div class="text-truncate" data-i18n="Category List">Category List</div>
+                    <a href="<?= base_url('products/categories') ?>" class="menu-link">
+                        <div class="text-truncate">Category List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="<?= base_url('products/brands') ?>" class="menu-link">
+                        <div class="text-truncate">Brand List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="<?= base_url('products/units') ?>" class="menu-link">
+                        <div class="text-truncate">Unit List</div>
                     </a>
                 </li>
             </ul>
@@ -164,11 +174,8 @@
         $('.menu-item').each(function() {
             var link = $(this).find('a');
             var href = link.attr('href');
-
-            // Check if the current URL contains the menu item's href
             if (currentUrl.indexOf(href) !== -1) {
                 $(this).addClass('active');
-                // Check if it has a menu-toggle class
                 if ($(this).hasClass('menu-toggle')) {
                     $(this).addClass('open');
                 }

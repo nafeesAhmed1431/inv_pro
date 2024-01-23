@@ -154,3 +154,43 @@ function user_form(status = 'view', data, id) {
             <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
         </form>`;
 }
+
+$(document).on('click', '.add_experience_row', function () {
+    $('.experience').append(`
+        <div class="row mb-3 align-items-center ">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Start Date</label>
+                    <input type="date" name="start[]" class="form-control" placeholder="Start Date" required>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">End Date</label>
+                    <input type="date" name="end[]" class="form-control" placeholder="End Date" required>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Job Title</label>
+                    <input type="text" name="title[]" class="form-control" placeholder="Manager...." required>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">Company</label>
+                    <input type="text" name="company[]" class="form-control" placeholder="INV Pro...." required>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label for=""></label>
+                    <button  class="remove_experience_row btn btn-danger">&times</button>
+                </div>
+            </div>
+        </div>`);
+});
+
+$(document).on('click', '.remove_experience_row', function () {
+    $(this).closest('.row').remove();
+});

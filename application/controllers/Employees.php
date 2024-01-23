@@ -34,6 +34,11 @@ class Employees extends MY_Controller
 
 	public function add()
 	{
+		$this->load_view('employees/add');
+	}
+
+	public function save()
+	{
 		if ($this->form_validation->run('employees/add|update')) {
 			$res = $this->model->insert([
 				'first_name' => $this->input->post('first_name'),
