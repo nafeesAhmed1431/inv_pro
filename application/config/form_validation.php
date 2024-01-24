@@ -55,7 +55,17 @@ $config = [
         ['field' => 'symbol', 'label' => 'Symbol', 'rules' => 'required|alpha'],
     ],
     'suppliers/add|update' => [
-        ['field' => 'name', 'label' => 'Name', 'rules' => 'required|alpha'],
+        ['field' => 'name', 'label' => 'Name', 'rules' => 'required|trim'],
+        ['field' => 'phone', 'label' => 'Phone Number', 'rules' => 'required|numeric'],
+        ['field' => 'address', 'label' => 'Address', 'rules' => 'required|trim'],
+        ['field' => 'email', 'label' => 'Email', 'rules' => 'required|valid_email'],
+        ['field' => 'city', 'label' => 'City', 'rules' => 'alpha'],
+        ['field' => 'state', 'label' => 'State', 'rules' => 'alpha'],
+        ['field' => 'country', 'label' => 'Country', 'rules' => 'alpha'],
+        ['field' => 'opening_balance', 'label' => 'Opening Balance', 'rules' => 'numeric'],
+    ],
+    'customers/add|update' => [
+        ['field' => 'name', 'label' => 'Name', 'rules' => 'required|trim'],
         ['field' => 'phone', 'label' => 'Phone Number', 'rules' => 'required|numeric'],
         ['field' => 'address', 'label' => 'Address', 'rules' => 'required|trim'],
         ['field' => 'email', 'label' => 'Email', 'rules' => 'required|valid_email'],

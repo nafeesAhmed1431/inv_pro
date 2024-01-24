@@ -90,13 +90,26 @@
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <div class="text-truncate">Customers</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="<?= base_url('customers') ?>" class="menu-link">
+                        <div class="text-truncate">List Customers</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-building"></i>
                 <div class="text-truncate">Suppliers</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="<?= base_url('suppliers') ?>" class="menu-link">
-                        <div class="text-truncate" data-i18n="Product List">List Supplies</div>
+                        <div class="text-truncate">List Supplies</div>
                     </a>
                 </li>
             </ul>
