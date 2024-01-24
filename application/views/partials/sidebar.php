@@ -91,17 +91,12 @@
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-building"></i>
-                <div class="text-truncate" data-i18n="Products">Supplies</div>
+                <div class="text-truncate">Suppliers</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="<?= base_url('suppliesChicken') ?>" class="menu-link">
-                        <div class="text-truncate" data-i18n="Product List">Chicken</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="<?= base_url('suppliesCheese') ?>" class="menu-link">
-                        <div class="text-truncate" data-i18n="Add Product">Cheese</div>
+                    <a href="<?= base_url('suppliers') ?>" class="menu-link">
+                        <div class="text-truncate" data-i18n="Product List">List Supplies</div>
                     </a>
                 </li>
             </ul>
