@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2024 at 11:39 AM
+-- Generation Time: Jan 24, 2024 at 08:33 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 7.4.33
 
@@ -79,6 +79,35 @@ CREATE TABLE `brands` (
 
 INSERT INTO `brands` (`id`, `name`, `email`, `mobile`, `phone`, `landline_1`, `landline_2`, `landline_3`, `address`, `is_active`, `created_at`, `updated_at`) VALUES
 (2, 'Shezan', 'shezan@gmail.com', '78978990', '89890890', '89089089', '890890890', '890890890', '890890890', 0, '2024-01-22 17:21:16', '2024-01-22 17:21:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `phone` int(15) NOT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `city` varchar(100) DEFAULT NULL,
+  `state` varchar(100) DEFAULT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  `opening_balance` int(100) DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `phone`, `address`, `description`, `email`, `city`, `state`, `country`, `opening_balance`, `is_active`, `created_at`, `updated_at`) VALUES
+(3, 'Nafees Ahmed', 789789, 'london, uk', NULL, 'nafees1431@gmail.com', 'ewrew', '', 'Pakistan', 789798, 0, '2024-01-24 20:25:15', '2024-01-24 20:25:24');
 
 -- --------------------------------------------------------
 
@@ -221,8 +250,23 @@ CREATE TABLE `suppliers` (
   `name` varchar(100) NOT NULL,
   `phone` int(15) NOT NULL,
   `address` varchar(100) DEFAULT NULL,
-  `description` text DEFAULT NULL
+  `description` text DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `city` varchar(100) DEFAULT NULL,
+  `state` varchar(100) DEFAULT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  `opening_balance` int(100) DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `suppliers`
+--
+
+INSERT INTO `suppliers` (`id`, `name`, `phone`, `address`, `description`, `email`, `city`, `state`, `country`, `opening_balance`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 'Test', 789798789, 'hjkhjkhkjl', NULL, 'test@gmail.com', 'jkhjklhjkhjk', 'khjkhkj', 'hjklhjk', 678, 1, '2024-01-24 19:58:48', '2024-01-24 20:11:10');
 
 -- --------------------------------------------------------
 
@@ -293,6 +337,12 @@ ALTER TABLE `brands`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `drivers`
 --
 ALTER TABLE `drivers`
@@ -345,6 +395,12 @@ ALTER TABLE `brands`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `drivers`
 --
 ALTER TABLE `drivers`
@@ -366,7 +422,7 @@ ALTER TABLE `product_categories`
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `units`
