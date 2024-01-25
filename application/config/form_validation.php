@@ -73,5 +73,13 @@ $config = [
         ['field' => 'state', 'label' => 'State', 'rules' => 'alpha'],
         ['field' => 'country', 'label' => 'Country', 'rules' => 'alpha'],
         ['field' => 'opening_balance', 'label' => 'Opening Balance', 'rules' => 'numeric'],
-    ]
+    ],
+    'product/add|update' => [
+        ['field' => 'name', 'label' => 'Name', 'rules' => 'required|trim'],
+        ['field' => 'code', 'label' => 'Code', 'rules' => 'required|trim'],
+        ['field' => 'cost', 'label' => 'Cost', 'rules' => 'required|numeric'],
+        ['field' => 'price', 'label' => 'Price', 'rules' => 'required|numeric'],
+        ['field' => 'details', 'label' => 'Details', 'rules' => 'trim'],
+    ],
+
 ];

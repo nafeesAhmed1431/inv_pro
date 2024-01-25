@@ -66,6 +66,11 @@
             </a>
         </li>
         <li class="menu-item">
+            <a href="<?= base_url('sales') ?>" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-money-withdraw"></i>Sales
+            </a>
+        </li>
+        <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div class="text-truncate">Employee</div>

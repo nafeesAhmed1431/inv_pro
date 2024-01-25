@@ -53,11 +53,17 @@ function get(id) {
     });
 }
 
+function to_upper(str) {
+    return str.replace(/_/g, ' ').replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+}
+
 // On Click view
 $(document).on('click', `.${view}`, function () {
     get($(this).data('id'))
         .done(res => {
-            $('#gc .gc_title').html(view);
+            $('#gc .gc_title').html(to_upper(view));
             $('#gc .gc_body').html(content_form("view", res.data, view));
             $('#gc').offcanvas('show');
         });
@@ -65,7 +71,7 @@ $(document).on('click', `.${view}`, function () {
 
 // On Click add
 $(document).on('click', `.${add}`, function () {
-    $('#gc .gc_title').html(add);
+    $('#gc .gc_title').html(to_upper(add));
     $('#gc .gc_body').html(content_form("add", {}, add));
     $('#gc').offcanvas('show');
 });
@@ -74,7 +80,7 @@ $(document).on('click', `.${add}`, function () {
 $(document).on('click', `.${edit}`, function () {
     get($(this).data('id'))
         .done(res => {
-            $('#gc .gc_title').html(edit);
+            $('#gc .gc_title').html(to_upper(edit));
             $('#gc .gc_body').html(content_form("edit", res.data, upd));
             $('#gc').offcanvas('show');
         });
@@ -152,6 +158,10 @@ $(document).on('click', `.${del}`, function () {
 
 function content_form(status = "view", data, id) {
     switch (content) {
+        case "product":
+            console.log([status, data, id]);
+            return product_form(status, data, id);
+            break;
         case "category":
             return category_form(status, data, id);
             break;
@@ -166,6 +176,40 @@ function content_form(status = "view", data, id) {
 }
 
 // Forms-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function product_form(status, data, id) {
+    return `<form id="${id}">
+            <input type="hidden" name="id" value="${status == 'edit' ? data.id : ""}">
+            <div class="mb-3 fv-plugins-icon-container">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" value="${status == 'edit' || status == "view" ? data.name : ""}" ${status == "view" ? "disabled" : ""}>
+            </div>
+            <div class="mb-3 fv-plugins-icon-container">
+                <label class="form-label">Code</label>
+                <input type="text" class="form-control" name="code" value="${status == 'edit' || status == "view" ? data.code : ""}" ${status == "view" ? "disabled" : ""}>
+            </div>
+            <div class="mb-3 fv-plugins-icon-container">
+                <label class="form-label">Cost</label>
+                <input type="text" class="form-control" name="cost" value="${status == 'edit' || status == "view" ? data.cost : ""}" ${status == "view" ? "disabled" : ""}>
+            </div>
+            <div class="mb-3 fv-plugins-icon-container">
+                <label class="form-label">Price</label>
+                <input type="text" class="form-control" name="price" value="${status == 'edit' || status == "view" ? data.price : ""}" ${status == "view" ? "disabled" : ""}>
+            </div>
+            <div class="mb-3 fv-plugins-icon-container">
+                <label class="form-label">Details</label>
+                <input type="text" class="form-control" name="details" value="${status == 'edit' || status == "view" ? data.details : ""}" ${status == "view" ? "disabled" : ""}>
+            </div>
+            <div class="mb-3 fv-plugins-icon-container">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="status" value="1" ${data.is_active == 1 ? "checked" : ""} id="active">
+                    <label class="btn btn-outline-info" for="active">Active</label>
+                    <input type="radio" class="btn-check" name="status" value="0" ${data.is_active == 0 ? "checked" : ""} id="inactive">
+                    <label class="btn btn-outline-danger" for="inactive">Inactive</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
+        </form>`;
+}
 function category_form(status, data, id) {
     return `<form id="${id}">
             <input type="hidden" name="id" value="${status == 'edit' ? data.id : ""}">

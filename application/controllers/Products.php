@@ -9,6 +9,7 @@ class Products extends MY_Controller
         parent::__construct();
         $this->load->model('product_categories_model', 'category');
         $this->load->model('Brand_model', 'brand');
+        $this->load->model('Product_model', 'product');
         $this->load->model('Unit_model', 'unit');
     }
 
@@ -19,8 +20,61 @@ class Products extends MY_Controller
 
     public function index_content()
     {
-        $data = [];
+        $data['data'] = $this->product->all();
+        $data['total'] = $this->product->count();
+        $data['active'] = $this->product->count(['is_active' => true]);
+        $data['inActive'] = $this->product->count(['is_active' => false]);
         echo json_encode(['status' => true, 'html' => $this->load->view('products/index_content', $data, true)]);
+    }
+
+    public function get_product()
+    {
+        $row = $this->product->get($this->input->get('id'));
+        echo json_encode(['status' => !empty($row), 'data' => $row]);
+    }
+
+    public function add_product()
+    {
+        if ($this->form_validation->run('product/add|update')) {
+            echo json_encode([
+                'status' => $this->product->insert([
+                    'name' => $this->input->post('name'),
+                    'code' => $this->input->post('code'),
+                    'cost' => $this->input->post('cost'),
+                    'price' => $this->input->post('price'),
+                    'details' => $this->input->post('details'),
+                    'is_active' => 1,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ], true)
+            ]);
+        } else {
+            echo json_encode(['status' => false, 'errors' => $this->form_validation->error_array()]);
+        }
+    }
+
+    public function update_product()
+    {
+        if ($this->form_validation->run('product/add|update')) {
+            echo json_encode([
+                'status' => $this->product->update([
+                    'name' => $this->input->post('name'),
+                    'code' => $this->input->post('code'),
+                    'cost' => $this->input->post('cost'),
+                    'price' => $this->input->post('price'),
+                    'details' => $this->input->post('details'),
+                    'is_active' => $this->input->post('status'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ], ['id' => $this->input->post('id')])
+            ]);
+        } else {
+            echo json_encode(['status' => false, 'errors' => $this->form_validation->error_array()]);
+        }
+    }
+
+    public function delete_product()
+    {
+        echo json_encode(['status' => $this->product->delete($this->input->post('id'))]);
     }
 
     // Categories----------------------------------------------------------------------------------------------------------------------------------------------------------------
