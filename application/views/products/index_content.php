@@ -22,7 +22,7 @@
                     <div class="d-flex justify-content-between align-items-start card-widget-2 border-end pb-3 pb-sm-0">
                         <div>
                             <h6 class="mb-2">Active</h6>
-                            <h4 class="mb-2"><?=$active?></h4>
+                            <h4 class="mb-2"><?= $active ?></h4>
                             <p class="mb-0"><span class="text-muted me-2">21k orders</span><span class="badge bg-label-success">+12.4%</span></p>
                         </div>
                         <div class="avatar me-lg-4">
@@ -37,7 +37,7 @@
                     <div class="d-flex justify-content-between align-items-start border-end pb-3 pb-sm-0 card-widget-3">
                         <div>
                             <h6 class="mb-2">In Active</h6>
-                            <h4 class="mb-2"><?=$inActive?></h4>
+                            <h4 class="mb-2"><?= $inActive ?></h4>
                             <p class="mb-0 text-muted">6k orders</p>
                         </div>
                         <div class="avatar me-sm-4">

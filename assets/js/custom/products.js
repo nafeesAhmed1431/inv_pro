@@ -159,7 +159,6 @@ $(document).on('click', `.${del}`, function () {
 function content_form(status = "view", data, id) {
     switch (content) {
         case "product":
-            console.log([status, data, id]);
             return product_form(status, data, id);
             break;
         case "category":
@@ -177,37 +176,39 @@ function content_form(status = "view", data, id) {
 
 // Forms-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function product_form(status, data, id) {
+
+
     return `<form id="${id}">
             <input type="hidden" name="id" value="${status == 'edit' ? data.id : ""}">
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" value="${status == 'edit' || status == "view" ? data.name : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="text" class="form-control" name="name" value="${status == 'edit' || status == " view" ? data.name : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">Code</label>
-                <input type="text" class="form-control" name="code" value="${status == 'edit' || status == "view" ? data.code : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="text" class="form-control" name="code" value="${status == 'edit' || status == " view" ? data.code : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">Cost</label>
-                <input type="text" class="form-control" name="cost" value="${status == 'edit' || status == "view" ? data.cost : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="text" class="form-control" name="cost" value="${status == 'edit' || status == " view" ? data.cost : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">Price</label>
-                <input type="text" class="form-control" name="price" value="${status == 'edit' || status == "view" ? data.price : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="text" class="form-control" name="price" value="${status == 'edit' || status == " view" ? data.price : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">Details</label>
-                <input type="text" class="form-control" name="details" value="${status == 'edit' || status == "view" ? data.details : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="text" class="form-control" name="details" value="${status == 'edit' || status == " view" ? data.details : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="status" value="1" ${data.is_active == 1 ? "checked" : ""} id="active">
-                    <label class="btn btn-outline-info" for="active">Active</label>
-                    <input type="radio" class="btn-check" name="status" value="0" ${data.is_active == 0 ? "checked" : ""} id="inactive">
-                    <label class="btn btn-outline-danger" for="inactive">Inactive</label>
+                        <label class="btn btn-outline-info" for="active">Active</label>
+                        <input type="radio" class="btn-check" name="status" value="0" ${data.is_active == 0 ? "checked" : ""} id="inactive">
+                            <label class="btn btn-outline-danger" for="inactive">Inactive</label>
+                        </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
+                <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
         </form>`;
 }
 function category_form(status, data, id) {
@@ -215,17 +216,17 @@ function category_form(status, data, id) {
             <input type="hidden" name="id" value="${status == 'edit' ? data.id : ""}">
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">Category Name</label>
-                <input type="text" class="form-control" name="name" value="${status == 'edit' || status == "view" ? data.name : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="text" class="form-control" name="name" value="${status == 'edit' || status == " view" ? data.name : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="status" value="1" ${data.is_active == 1 ? "checked" : ""} id="active">
-                    <label class="btn btn-outline-info" for="active">Active</label>
-                    <input type="radio" class="btn-check" name="status" value="0" ${data.is_active == 0 ? "checked" : ""} id="inactive">
-                    <label class="btn btn-outline-danger" for="inactive">Inactive</label>
+                        <label class="btn btn-outline-info" for="active">Active</label>
+                        <input type="radio" class="btn-check" name="status" value="0" ${data.is_active == 0 ? "checked" : ""} id="inactive">
+                            <label class="btn btn-outline-danger" for="inactive">Inactive</label>
+                        </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
+                <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
         </form>`;
 }
 
@@ -234,21 +235,21 @@ function unit_form(status, data, id) {
             <input type="hidden" name="id" value="${status == 'edit' ? data.id : ""}">
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">Category Name</label>
-                <input type="text" class="form-control" name="name" value="${status == 'edit' || status == "view" ? data.name : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="text" class="form-control" name="name" value="${status == 'edit' || status == " view" ? data.name : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">Symbol</label>
-                <input type="text" class="form-control" name="symbol" value="${status == 'edit' || status == "view" ? data.symbol : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="text" class="form-control" name="symbol" value="${status == 'edit' || status == " view" ? data.symbol : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="status" value="1" ${data.is_active == 1 ? "checked" : ""} id="active">
-                    <label class="btn btn-outline-info" for="active">Active</label>
-                    <input type="radio" class="btn-check" name="status" value="0" ${data.is_active == 0 ? "checked" : ""} id="inactive">
-                    <label class="btn btn-outline-danger" for="inactive">Inactive</label>
+                        <label class="btn btn-outline-info" for="active">Active</label>
+                        <input type="radio" class="btn-check" name="status" value="0" ${data.is_active == 0 ? "checked" : ""} id="inactive">
+                            <label class="btn btn-outline-danger" for="inactive">Inactive</label>
+                        </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
+                <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
         </form>`;
 }
 
@@ -257,44 +258,44 @@ function brand_form(status, data, id) {
             <input type="hidden" name="id" value="${status == 'edit' ? data.id : ""}">
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">Brand Name</label>
-                <input type="text" class="form-control" name="name" value="${status == 'edit' || status == "view" ? data.name : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="text" class="form-control" name="name" value="${status == 'edit' || status == " view" ? data.name : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" value="${status == 'edit' || status == "view" ? data.email : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="email" class="form-control" name="email" value="${status == 'edit' || status == " view" ? data.email : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">Mobile</label>
-                <input type="number" class="form-control" name="mobile" value="${status == 'edit' || status == "view" ? data.mobile : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="number" class="form-control" name="mobile" value="${status == 'edit' || status == " view" ? data.mobile : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">Phone</label>
-                <input type="number" class="form-control" name="phone" value="${status == 'edit' || status == "view" ? data.phone : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="number" class="form-control" name="phone" value="${status == 'edit' || status == " view" ? data.phone : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">LandLine 1</label>
-                <input type="number" class="form-control" name="landline_1" value="${status == 'edit' || status == "view" ? data.landline_1 : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="number" class="form-control" name="landline_1" value="${status == 'edit' || status == " view" ? data.landline_1 : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">LandLine 2</label>
-                <input type="number" class="form-control" name="landline_2" value="${status == 'edit' || status == "view" ? data.landline_2 : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="number" class="form-control" name="landline_2" value="${status == 'edit' || status == " view" ? data.landline_2 : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">LandLine 3</label>
-                <input type="number" class="form-control" name="landline_3" value="${status == 'edit' || status == "view" ? data.landline_3 : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="number" class="form-control" name="landline_3" value="${status == 'edit' || status == " view" ? data.landline_3 : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <label class="form-label">Address</label>
-                <input type="text" class="form-control" name="address" value="${status == 'edit' || status == "view" ? data.address : ""}" ${status == "view" ? "disabled" : ""}>
+                <input type="text" class="form-control" name="address" value="${status == 'edit' || status == " view" ? data.address : ""}" ${status == "view" ? "disabled" : ""}>
             </div>
             <div class="mb-3 fv-plugins-icon-container">
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="status" value="1" ${data.is_active == 1 ? "checked" : ""} id="active">
-                    <label class="btn btn-outline-info" for="active">Active</label>
-                    <input type="radio" class="btn-check" name="status" value="0" ${data.is_active == 0 ? "checked" : ""} id="inactive">
-                    <label class="btn btn-outline-danger" for="inactive">Inactive</label>
+                        <label class="btn btn-outline-info" for="active">Active</label>
+                        <input type="radio" class="btn-check" name="status" value="0" ${data.is_active == 0 ? "checked" : ""} id="inactive">
+                            <label class="btn btn-outline-danger" for="inactive">Inactive</label>
+                        </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
+                <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
         </form>`;
 }

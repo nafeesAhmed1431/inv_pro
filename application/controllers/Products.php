@@ -9,8 +9,9 @@ class Products extends MY_Controller
         parent::__construct();
         $this->load->model('product_categories_model', 'category');
         $this->load->model('Brand_model', 'brand');
-        $this->load->model('Product_model', 'product');
+        $this->load->model('Ctegory_model', 'category');
         $this->load->model('Unit_model', 'unit');
+        $this->load->model('Product_model', 'product');
     }
 
     public function index()
@@ -31,6 +32,16 @@ class Products extends MY_Controller
     {
         $row = $this->product->get($this->input->get('id'));
         echo json_encode(['status' => !empty($row), 'data' => $row]);
+    }
+
+    public function get_payload()
+    {
+        echo json_encode([
+            'status' => true,
+            "categories" => $this->category->select(['id','name']),
+            "brands" => $this->brand->select(['id','name']),
+            "unit" => $this->unit->select(['id','symbol']),
+        ]);
     }
 
     public function add_product()
